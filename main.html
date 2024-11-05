@@ -80,6 +80,12 @@
     button:focus {
       outline: none;
     }
+
+    .color{
+            color: black;
+            text-decoration: none;
+            font-size: 16px;
+        }
   </style>
 </head>
 <body>
@@ -102,40 +108,9 @@
       <label for="description">Description:</label>
       <textarea id="description" name="description" rows="4" placeholder="Provide additional details (optional)"></textarea>
 
-      <button type="submit">Submit</button>
+      <button type="submit"><a href="./last.html" class="color">Submit</a></button>
     </form>
   </div>
-
-  <script>
-    document.getElementById('donationForm').addEventListener('submit', function(event) {
-      event.preventDefault(); // Prevent the default form submission
-
-      var formData = new FormData(this);
-      var data = {};
-
-      // Convert form data into an object
-      formData.forEach(function(value, key) {
-        data[key] = value;
-      });
-
-      // Send data to the Google Apps Script via POST request
-      fetch('https://script.google.com/macros/s/AKfycbx7CMk69hpK0WfSdA-o9F-Vib2-XdJsPoed6jndM5n5tYfZQlrZjPok39kL22DT6qUCrA/exec', { // Replace with your actual Apps Script URL
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
-      })
-      .then(response => response.json())
-      .then(result => {
-        alert('Form submitted successfully!');
-        document.getElementById('donationForm').reset(); // Reset form after submission
-      })
-      .catch(error => {
-        alert('Thankyou!!');
-      });
-    });
-  </script>
 
 </body>
 </html>
